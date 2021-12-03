@@ -1,5 +1,4 @@
 *.dio*
+docs/
 quicksort-java/bin
-quicksort-java/docs
 quicksort-py/__pycache__
-quicksort-py/html
