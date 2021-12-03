@@ -1,12 +1,12 @@
 import java.util.Random;
 
 /**
- * Main QuickSort class
+ *  @brief Main QuickSort class
  */
 public class QuickSort {
 
     /**
-     * Main Method, contains logic for testing out quicksort
+     * @brief Main Method, contains logic for testing out quicksort
      * 
      * @param args cli args
      */
@@ -38,7 +38,7 @@ public class QuickSort {
     }
 
     /**
-     * Logic for main quickSort method -- base case, choosing a pivot & all that
+     * @brief Logic for main quickSort method -- base case, choosing a pivot & all that
      * 
      * @param arr     array to be sorted
      * @param lowIdx  low index of said array
@@ -65,7 +65,7 @@ public class QuickSort {
     }
 
     /**
-     * A more natural way to call the method initially
+     * @brief A more natural way to call the method initially
      * 
      * @param arr the array to be sorted
      * @see #quickSort(int[], int, int)
@@ -75,7 +75,7 @@ public class QuickSort {
     }
 
     /**
-     * This method contains logic for partitioning the sub-arrays
+     * @brief This method contains logic for partitioning the sub-arrays
      * 
      * @param arr     array to be partitioned
      * @param lowIdx  low index of said array
@@ -112,7 +112,7 @@ public class QuickSort {
     }
 
     /**
-     * Swaps the value at arr[idx1] w/ arr[idx2] & vice versa.
+     * @brief Swaps the value at arr[idx1] w/ arr[idx2] & vice versa.
      * 
      * @param arr  the array to be operated upon
      * @param idx1 index of first element
@@ -125,7 +125,7 @@ public class QuickSort {
     }
 
     /**
-     * Just print an integer array...nothing fancy here...
+     * @brief Just print an integer array...nothing fancy here...
      * 
      * @param arr array to be printed
      */
@@ -139,7 +139,7 @@ public class QuickSort {
     }
 
     /**
-     * Simple method to check if an int array is sorted
+     * @brief Simple method to check if an int array is sorted
      * 
      * @param arr array to be checked
      * @return true/false indicating wheter sorted or not
