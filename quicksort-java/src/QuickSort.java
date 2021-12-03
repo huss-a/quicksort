@@ -33,7 +33,7 @@ public class QuickSort {
         // printArray(numArr);
 
         // Confirm if sorted
-        System.out.println("Checking sorted...");
+        System.out.print("Checking sorted...");
         System.out.println(isSorted(numArr));
     }
 

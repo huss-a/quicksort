@@ -126,5 +126,5 @@ if __name__ == "__main__":
     # print(num_arr)
 
     # Confirm if sorted
-    print("Checking sorted...")
+    print("Checking sorted...", end="")
     print(qs.is_sorted(num_arr))
