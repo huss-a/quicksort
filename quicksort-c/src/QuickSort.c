@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < numArrSize; i++)
     {
-        // Gen rand int w/ range 0..20000
+        // Gen rand int
         numArr[i] = rand() % 20000;
     }
 

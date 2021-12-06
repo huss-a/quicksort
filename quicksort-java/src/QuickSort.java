@@ -19,7 +19,7 @@ public class QuickSort {
         int[] numArr = new int[numArraySize];
 
         for (int i = 0; i < numArr.length; i++) {
-            // Gen rand int w/ range 0..2000
+            // Gen rand int
             numArr[i] = rand.nextInt(200000);
         }
 
@@ -89,13 +89,13 @@ public class QuickSort {
 
         // break out when both pointers meet
         while (leftPtr < rightPtr) {
-            // move left_ptr to the right if arr[left pointer]
+            // move leftPtr to the right if arr[left pointer]
             // is not > pivot & both pointers haven't met
             while (arr[leftPtr] <= pivot && leftPtr < rightPtr) {
                 leftPtr++;
             }
 
-            // move right_ptr to the left if arr[right pointer]
+            // move rightPtr to the left if arr[right pointer]
             // is not < pivot & both pointers haven't met
             while (arr[rightPtr] >= pivot && leftPtr < rightPtr) {
                 rightPtr--;
