@@ -4,5 +4,4 @@ quicksort-java/bin
 quicksort-py/__pycache__
 vgcore*
 target/
-vgcore*
 *.sh
