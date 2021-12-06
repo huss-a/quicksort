@@ -1,41 +1,38 @@
-#![allow(non_snake_case)]
-#![allow(dead_code)]
-
 use rand::Rng;
 
 mod quicksort {
     use super::Rng;
 
-    pub fn quicksort(arr: &mut [isize], lowIdx: isize, highIdx: isize) {
-        if lowIdx >= highIdx {
+    pub fn quicksort(arr: &mut Vec<isize>, low_idx: isize, high_idx: isize) {
+        if low_idx >= high_idx {
             return;
         }
         let mut rand = rand::thread_rng();
-        let pivotIdx = rand.gen_range(lowIdx..highIdx) as usize;
-        let pivot = arr[pivotIdx];
-        arr.swap(pivotIdx, highIdx as usize);
-        let leftPtr = partition(arr, lowIdx, highIdx, pivot);
-        quicksort(arr, lowIdx, (leftPtr - 1) as isize);
-        quicksort(arr, leftPtr + 1, highIdx);
+        let pivot_idx = rand.gen_range(low_idx..high_idx) as usize;
+        let pivot = arr[pivot_idx];
+        arr.swap(pivot_idx, high_idx as usize);
+        let left_ptr = partition(arr, low_idx, high_idx, pivot);
+        quicksort(arr, low_idx, (left_ptr - 1) as isize);
+        quicksort(arr, left_ptr + 1, high_idx);
     }
 
-    fn partition(arr: &mut [isize], lowIdx: isize, highIdx: isize, pivot: isize) -> isize {
-        let mut leftPtr = lowIdx as isize;
-        let mut rightPtr = highIdx as isize;
+    fn partition(arr: &mut Vec<isize>, low_idx: isize, high_idx: isize, pivot: isize) -> isize {
+        let mut left_ptr = low_idx as isize;
+        let mut right_ptr = high_idx as isize;
 
-        while leftPtr < rightPtr {
-            while arr[leftPtr as usize] <= pivot && leftPtr < rightPtr {
-                leftPtr += 1;
+        while left_ptr < right_ptr {
+            while arr[left_ptr as usize] <= pivot && left_ptr < right_ptr {
+                left_ptr += 1;
             }
 
-            while arr[rightPtr as usize] >= pivot && leftPtr < rightPtr {
-                rightPtr -= 1;
+            while arr[right_ptr as usize] >= pivot && left_ptr < right_ptr {
+                right_ptr -= 1;
             }
 
-            arr.swap(leftPtr as usize, rightPtr as usize);
+            arr.swap(left_ptr as usize, right_ptr as usize);
         }
-        arr.swap(leftPtr as usize, highIdx as usize);
-        leftPtr
+        arr.swap(left_ptr as usize, high_idx as usize);
+        left_ptr
     }
 
     pub fn is_sorted(arr: &[isize]) -> bool {
@@ -52,16 +49,26 @@ mod quicksort {
 }
 
 fn main() {
-    const NUM_ARR_SIZE: usize = 10000000;
-    let mut arr: [isize; NUM_ARR_SIZE] = [0; NUM_ARR_SIZE];
+    use std::env;
+
+    let num_arr_size = {
+        let args: Vec<_> = env::args().collect();
+        if args.len() < 2 {
+            1000
+        } else {
+            args[1].parse::<u32>().unwrap() as usize
+        }
+    };
+
+    let mut num_arr = Vec::with_capacity(num_arr_size);
     let mut rand = rand::thread_rng();
-    for i in 0..NUM_ARR_SIZE {
-        arr[i] = rand.gen_range(0..200000);
+    for _ in 0..num_arr_size {
+        num_arr.push(rand.gen_range(-100_000..200_000));
     }
     println!("Sorting...");
     // println!("{:?}", arr);
-    quicksort::quicksort(&mut arr, 0, (NUM_ARR_SIZE - 1) as isize);
+    quicksort::quicksort(&mut num_arr, 0, (num_arr_size - 1) as isize);
     println!("Sorted");
     // println!("{:?}", arr);
-    println!("Checking sorted..{}", quicksort::is_sorted(&arr));
+    println!("Checking sorted..{}", quicksort::is_sorted(&num_arr));
 }
